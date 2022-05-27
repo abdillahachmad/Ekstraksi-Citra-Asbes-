@@ -1,0 +1,11 @@
+features =[]
+[filename, pathname] = uigetfile({'*.*';'*.bmp';'*.jpg';'*.gif'});
+Input = imread([pathname,filename]);
+gray = rgb2gray(Input)
+glcm = graycomatrix(gray)
+stats = graycoprops(glcm,'Contrast Correlation Energy Homogeneity');
+Contrast = stats.Contrast;
+Correlation = stats.Correlation;
+Energy = stats.Energy;
+Homogeneity = stats.Homogeneity;
+features=[Contrast, Correlation, Energy, Homogeneity]  
